@@ -485,10 +485,16 @@ details.paso .inner p{margin:6px 0}
 .gs-out a:hover,.gs-out a:focus-visible{border-color:var(--line);background:var(--surface)}
 .gs-out small{color:var(--muted)}
 
-/* Análisis de Circuitos: rojo como el resto de guías de 1.º */
-:root{--accent:#b4232f;--accent-soft:#f8e4e4;--c0:#b4232f;--c0s:#f8e4e4;--warn:#b8730c;--warn-soft:#f7ecda}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#ff7b86;--accent-soft:#3a1a1e;--c0:#ff7b86;--c0s:#3a1a1e;--warn:#f0b252;--warn-soft:#3a2b12}}
-:root[data-theme="dark"]{--accent:#ff7b86;--accent-soft:#3a1a1e;--c0:#ff7b86;--c0s:#3a1a1e;--warn:#f0b252;--warn-soft:#3a2b12}
+/* Análisis de Circuitos: ámbar eléctrico (toda la paleta, también la de las figuras) */
+:root{--accent:#b06a00;--accent-soft:#fdeed2;--c0:#b06a00;--c0s:#fdeed2;--warn:#a33b1f;--warn-soft:#f9e3dc;
+ --c1:#b06a00;--c1s:#fdeed2;--c2:#8a5a12;--c2s:#f7ecd9;--c3:#c27c08;--c3s:#fdf0d8;--c4:#946016;--c4s:#f8eeda;
+ --c5:#a86b05;--c5s:#fcefd5;--c6:#7e5410;--c6s:#f5ebdb;--c7:#bb7a1a;--c7s:#fdf1dd;--c8:#9c6200;--c8s:#fbecd2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#f3b64a;--accent-soft:#3a2c12;--c0:#f3b64a;--c0s:#3a2c12;--warn:#f08a68;--warn-soft:#3a221a;
+ --c1:#f3b64a;--c1s:#3a2c12;--c2:#e2a855;--c2s:#382a12;--c3:#ffc766;--c3s:#3d2e13;--c4:#dca24e;--c4s:#372911;
+ --c5:#edb155;--c5s:#3a2b12;--c6:#cf9a4a;--c6s:#352810;--c7:#ffd083;--c7s:#3f3015;--c8:#e9ad46;--c8s:#392b11}}
+:root[data-theme="dark"]{--accent:#f3b64a;--accent-soft:#3a2c12;--c0:#f3b64a;--c0s:#3a2c12;--warn:#f08a68;--warn-soft:#3a221a;
+ --c1:#f3b64a;--c1s:#3a2c12;--c2:#e2a855;--c2s:#382a12;--c3:#ffc766;--c3s:#3d2e13;--c4:#dca24e;--c4s:#372911;
+ --c5:#edb155;--c5s:#3a2b12;--c6:#cf9a4a;--c6s:#352810;--c7:#ffd083;--c7s:#3f3015;--c8:#e9ad46;--c8s:#392b11}
 /* Química General: ajustes */
 .qz button{font:600 13px system-ui;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;margin:4px 4px 0 0}.qz button:hover{border-color:var(--accent)}.qopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;margin:8px 0}.qopts .qo{text-align:left;padding:10px 12px;border-radius:10px;font-size:14px}.qo.ok{background:var(--accent-soft);border-color:var(--accent)}.qo.bad{background:var(--warn-soft);border-color:var(--warn)}.qo:disabled{cursor:default;opacity:.9}
 .code{font:12.5px/1.5 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre}
