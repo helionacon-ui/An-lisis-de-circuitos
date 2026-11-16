@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,38 +86,38 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c5);--tcs:var(--c5s)">
 <div class="sh"><span aria-hidden="true" class="badge">12</span><div class="shx"><p class="kick">Cuadripolos y elementos no lineales · Tema 12</p><h2 id="t12">Elementos no lineales: diodos y transistores</h2><div class="tags"><span class="tag">Cuadripolos y elementos no lineales</span><span class="tag">Segundo parcial</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> analizar circuitos con diodos por tramos, reconocer los montajes rectificadores, polarizar un transistor bipolar y saber qué hace un FET o un MOSFET.</p>
-<p>Hasta aquí todos los elementos eran <b>lineales</b>: su característica \(v\)-\(i\) es una recta y valen la superposición y Thévenin. Un <b>diodo</b> o un <b>transistor</b> no lo son, así que hay que cambiar de método.</p>
-<p><b>Diodo ideal:</b> cortocircuito en directa y circuito abierto en inversa. <b>Modelo de 0,7 V:</b> una fuente de 0,7 V en serie con el interruptor; es el que se usa en examen. <b>Modelo con resistencia:</b> añade \(r_d\) en serie.</p>
-<p><b>Método de análisis:</b> se <b>supone</b> un estado para cada diodo, se resuelve el circuito lineal que resulta y se <b>comprueba</b> la hipótesis (corriente positiva si lo supusiste conduciendo, tensión menor que 0,7 V si lo supusiste cortado). Si falla, se cambia la hipótesis.</p>
-<p><b>Rectificadores:</b> media onda \(V_{dc}=V_p/\pi\); onda completa \(V_{dc}=2V_p/\pi\); con condensador de filtro, el rizado es \(V_r\approx I_{dc}/(fC)\) en media onda y \(I_{dc}/(2fC)\) en onda completa.</p>
-<p><b>Transistor bipolar:</b> tres zonas (corte, activa, saturación). En activa, \(I_C=\beta I_B\) y \(V_{BE}\approx0{,}7\) V. <b>FET/MOSFET:</b> controlado por tensión, la puerta no consume corriente.</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> analizar circuitos con diodos por tramos, reconocer los montajes rectificadores, polarizar un transistor bipolar y saber qué hace un FET o un MOSFET.</p>
+<p class="lede">Hasta aquí todos los elementos eran <b>lineales</b>: su característica \(v\)-\(i\) es una recta y valen la superposición y Thévenin. Un <b>diodo</b> o un <b>transistor</b> no lo son, así que hay que cambiar de método.</p>
+<p class="run"><b>Diodo ideal:</b> cortocircuito en directa y circuito abierto en inversa. <b>Modelo de 0,7 V:</b> una fuente de 0,7 V en serie con el interruptor; es el que se usa en examen. <b>Modelo con resistencia:</b> añade \(r_d\) en serie.</p>
+<p class="run"><b>Método de análisis:</b> se <b>supone</b> un estado para cada diodo, se resuelve el circuito lineal que resulta y se <b>comprueba</b> la hipótesis (corriente positiva si lo supusiste conduciendo, tensión menor que 0,7 V si lo supusiste cortado). Si falla, se cambia la hipótesis.</p>
+<p class="run"><b>Rectificadores:</b> media onda \(V_{dc}=V_p/\pi\); onda completa \(V_{dc}=2V_p/\pi\); con condensador de filtro, el rizado es \(V_r\approx I_{dc}/(fC)\) en media onda y \(I_{dc}/(2fC)\) en onda completa.</p>
+<p class="run"><b>Transistor bipolar:</b> tres zonas (corte, activa, saturación). En activa, \(I_C=\beta I_B\) y \(V_{BE}\approx0{,}7\) V. <b>FET/MOSFET:</b> controlado por tensión, la puerta no consume corriente.</p>
 </div>
 <details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 12 <span class="src">6 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">V_γ</td><td>Tensión umbral del diodo</td><td class="u">0,7 V en silicio; 0,3 V en germanio</td></tr><tr><td class="sym">r_d</td><td>Resistencia dinámica del diodo</td><td class="u">Ω; r_d = V_T/I_D</td></tr><tr><td class="sym">V_dc</td><td>Valor medio tras rectificar</td><td class="u">V; V_p/π en media onda</td></tr><tr><td class="sym">V_r</td><td>Rizado pico a pico con filtro</td><td class="u">V; ≈ I/(2fC) en onda completa</td></tr><tr><td class="sym">β (h_FE)</td><td>Ganancia de corriente del BJT</td><td class="u">adimensional; 50-400</td></tr><tr><td class="sym">V_GS, V_T</td><td>Tensión puerta-fuente y umbral del MOSFET</td><td class="u">V</td></tr></table></div></div></details>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Por qué deja de valer la superposición</p><p>La superposición, Thévenin, Norton y Millman se demuestran todos a partir de la linealidad. Con un diodo en el circuito, ninguno vale directamente: la respuesta a dos fuentes no es la suma de las respuestas.</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Por qué deja de valer la superposición</p><p class="lede">La superposición, Thévenin, Norton y Millman se demuestran todos a partir de la linealidad. Con un diodo en el circuito, ninguno vale directamente: la respuesta a dos fuentes no es la suma de las respuestas.</p>
 <p>La salida es trabajar <b>por tramos</b>. Una vez fijado el estado de cada diodo, el circuito <b>sí</b> es lineal, y dentro de ese tramo se puede usar todo el arsenal de los temas 2 y 3. El trabajo está en acertar el tramo.</p>
 <p class="ft">El método de prueba y comprobación, con orden</p><ol class="pasos"><li>Cuenta los diodos: con \(n\) diodos hay \(2^n\) combinaciones posibles, pero casi siempre solo una es coherente.</li><li>Haz una hipótesis razonable mirando las polaridades de las fuentes.</li><li>Sustituye: diodo que conduce → fuente de 0,7 V; diodo cortado → circuito abierto.</li><li>Resuelve el circuito lineal resultante.</li><li><b>Comprueba:</b> para los que supusiste conduciendo, \(I_D&gt;0\); para los cortados, \(V_D&lt;0{,}7\) V. Si alguno falla, cambia su hipótesis y repite.</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> No te saltes la comprobación. Un circuito con dos diodos puede dar un resultado aparentemente razonable con la hipótesis equivocada, y solo la verificación del signo de la corriente lo delata.</div>
 </div><!--/amp1--><!--deep--><h3 id="t12-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. La unión PN</h4>
+<h4><span class="hn">1</span>La unión PN</h4>
 <p>Al unir un semiconductor tipo p con uno tipo n, los portadores difunden y dejan una <b>zona de deplexión</b> con un campo interno que frena la difusión. La característica resultante es la ecuación de Shockley:</p>
 <div class="eqd">\[i_D=I_S\left(e^{v_D/\eta V_T}-1\right)\qquad V_T=\frac{kT}{q}\approx25\ \text{mV a }300\ \text{K}\]</div>
 <ul><li><b>Directa</b> (\(v_D&gt;0\)): la exponencial domina; la corriente crece muy deprisa a partir de unos 0,6-0,7 V en silicio.</li><li><b>Inversa:</b> queda \(-I_S\), del orden de nanoamperios: prácticamente abierto.</li><li><b>Ruptura:</b> por debajo de \(-V_Z\) conduce bruscamente. En un <b>zener</b> eso no lo destruye y se aprovecha para regular tensión.</li></ul>
 <div class="box key deepnote"><b>Idea clave.</b> la pendiente de la exponencial en el punto de trabajo da la <b>resistencia dinámica</b> \(r_d=\eta V_T/I_D\): a 1 mA son unos 25 Ω. Es lo que ve una señal pequeña superpuesta.</div>
-<h4>2. Rectificación y filtrado</h4>
+<h4><span class="hn">2</span>Rectificación y filtrado</h4>
 <div class="tw"><table><tr><th>Montaje</th><th>V_dc</th><th>V_eficaz</th><th>f rizado</th><th>PIV</th></tr><tr><td>Media onda</td><td>V_p/π = 0,318 V_p</td><td>V_p/2</td><td>f</td><td>V_p</td></tr><tr><td>Onda completa, toma media</td><td>2V_p/π = 0,637 V_p</td><td>V_p/√2</td><td>2f</td><td>2V_p</td></tr><tr><td>Puente de Graetz</td><td>2V_p/π</td><td>V_p/√2</td><td>2f</td><td>V_p</td></tr></table></div><p>El <b>puente</b> gana en casi todo: mismo valor medio que la toma media, con la mitad de tensión inversa de pico que soportar y sin necesidad de transformador con punto medio. A cambio hay dos diodos en serie conduciendo, así que se pierden 1,4 V en vez de 0,7 V.</p>
 <p>Con condensador en paralelo con la carga, el rizado pico a pico es aproximadamente</p>
 <div class="eqd">\[V_r\simeq\frac{I_{dc}}{2fC}\ \ (\text{onda completa})\qquad V_{dc}\simeq V_p-\frac{V_r}{2}\]</div>
 <div class="box trap deepnote"><b>Cuidado.</b> El condensador hace que los diodos conduzcan solo en picos muy estrechos, así que la corriente de pico es mucho mayor que la media. Es la razón de que haya que mirar \(I_{FSM}\) en la hoja de características y no solo la corriente media.</div>
-<h4>3. Recortadores, fijadores y multiplicadores</h4>
+<h4><span class="hn">3</span>Recortadores, fijadores y multiplicadores</h4>
 <ul><li><b>Recortador (clipper):</b> un diodo con una fuente en serie corta la señal por encima o por debajo de un nivel. Protege entradas y conforma ondas.</li><li><b>Fijador (clamper):</b> un condensador en serie y un diodo a masa desplazan toda la onda sin deformarla, hasta que un extremo queda fijado en 0 V (o en el nivel que marque una fuente).</li><li><b>Doblador de tensión:</b> dos fijadores encadenados dan \(2V_p\) en continua. Encadenando más etapas se construye un multiplicador de Cockcroft-Walton.</li></ul>
 <p><b>Zener como regulador:</b> con una resistencia serie \(R_S\), la tensión de salida se mantiene en \(V_Z\) mientras la corriente por el zener se mantenga entre un mínimo (unos miliamperios, para que siga en ruptura) y el máximo que permita su potencia \(P_Z=V_ZI_{Z\max}\). El peor caso de diseño es <b>entrada máxima con carga mínima</b>.</p>
-<h4>4. El transistor bipolar</h4>
+<h4><span class="hn">4</span>El transistor bipolar</h4>
 <div class="tw"><table><tr><th>Zona</th><th>Unión B-E</th><th>Unión B-C</th><th>Relación</th><th>Uso</th></tr><tr><td>Corte</td><td>Inversa</td><td>Inversa</td><td>I_C ≈ 0</td><td>Interruptor abierto</td></tr><tr><td>Activa</td><td>Directa</td><td>Inversa</td><td>I_C = βI_B</td><td>Amplificador</td></tr><tr><td>Saturación</td><td>Directa</td><td>Directa</td><td>V_CE ≈ 0,2 V</td><td>Interruptor cerrado</td></tr></table></div><p>Para resolver un circuito con BJT se <b>supone activa</b>, se calcula y se comprueba: si sale \(V_{CE}&lt;0{,}2\) V, en realidad estaba saturado y hay que rehacerlo con \(V_{CE}=0{,}2\) V (y entonces \(I_C&lt;\beta I_B\)). Es el mismo método de hipótesis y comprobación que con los diodos.</p>
 <div class="eqd">\[I_E=I_B+I_C\qquad I_C=\beta I_B\qquad \alpha=\frac{\beta}{\beta+1}\approx0{,}99\]</div>
 <div class="box key deepnote"><b>Idea clave.</b> como interruptor se trabaja <b>a propósito</b> en saturación, forzando una corriente de base bastante mayor que \(I_C/\beta\) (factor de sobreexcitación de 2 a 10). Así se garantiza que conmute aunque \(\beta\) varíe de un ejemplar a otro.</div>
-<h4>5. FET y MOSFET</h4>
+<h4><span class="hn">5</span>FET y MOSFET</h4>
 <ul><li><b>JFET:</b> la puerta es una unión polarizada en inversa; se controla con \(V_{GS}&lt;0\) hasta el estrangulamiento \(V_P\). \(I_D=I_{DSS}(1-V_{GS}/V_P)^2\).</li><li><b>MOSFET de enriquecimiento:</b> la puerta está aislada por óxido. Conduce al superar la tensión umbral: \(I_D=\tfrac12k(V_{GS}-V_T)^2\) en saturación.</li><li>En la zona <b>óhmica</b> (\(V_{DS}\) pequeña) se comporta como una resistencia controlada por \(V_{GS}\); es el modo en que trabaja como interruptor, con una \(R_{DS(on)}\) de miliohmios.</li></ul>
 <p>Diferencia clave con el BJT: el FET se controla por <b>tensión</b> y no consume corriente de puerta, así que su impedancia de entrada es enorme. Por eso es la base de la electrónica digital CMOS y de la conmutación de potencia moderna.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> El óxido de puerta de un MOSFET se perfora con unas pocas decenas de voltios, y la electricidad estática de una persona llega a kilovoltios. De ahí las precauciones antiestáticas al manipularlos.</div>

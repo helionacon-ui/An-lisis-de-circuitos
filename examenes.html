@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -45,7 +85,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Primer parcial · continua y fasores</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Magnitudes eléctricas</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Circuitos de corriente continua: reducción de redes</a><a href="tema-03.html" style="--tc:var(--c4)">T3 Teoremas fundamentales en continua</a><a href="tema-04.html" style="--tc:var(--c5)">T4 Ondas periódicas, señal senoidal y fasor</a><a href="tema-05.html" style="--tc:var(--c6)">T5 R, L y C en alterna: impedancia y admitancia</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Potencia en corriente alterna</a><div class="grp">Segundo parcial · alterna, transitorios y trifásica</div><a href="tema-07.html" style="--tc:var(--c8)">T7 Teoremas fundamentales en alterna</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Régimen transitorio</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Sistemas trifásicos equilibrados</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Potencia en sistemas trifásicos</a><div class="grp">Cuadripolos y elementos no lineales</div><a href="tema-11.html" style="--tc:var(--c4)">T11 Redes de dos puertas (cuadripolos)</a><a href="tema-12.html" style="--tc:var(--c5)">T12 Elementos no lineales: diodos y transistores</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" class="on" aria-current="page" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas de laboratorio</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
 <main>
 <section class="sec" style="--tc:var(--c8);--tcs:var(--c8s)"><div class="sh"><span aria-hidden="true" class="badge">Ex</span><div class="shx"><p class="kick">Practicar · Problemas</p><h2 id="exam">Problemas tipo resueltos</h2><div class="tags"><span class="tag">14 problemas</span><span class="tag">6 o 7 en cada examen</span></div></div></div>
-<div class="zero"><p class="ft">Cómo usarlos</p><p>Un problema representativo de cada bloque de los boletines, resuelto con todos los pasos y con la comprobación final (balance de potencias, suma de fasores, Aarón...). Hazlos en papel; si te atascas, abre solo el primer paso.</p></div><div class="prob"><h3 class="ph" id="ex1">Problema 1 · Reducción de redes y potencia del generador <span class="tag">Boletín T2, problemas 1 y 9</span> <a class="tag" href="tema-02.html">T2</a></h3><div class="enun"><p class="et">Enunciado</p><p>Fuente de 60 V con R₁ = 10 Ω en serie, el paralelo de R₂ = 40 Ω y R₃ = 60 Ω, y R₄ = 6 Ω en serie. Hallar el circuito equivalente, la intensidad total, la de cada rama y la potencia del generador.</p></div><details class="paso"><summary><span class="pn">✓</span>Solución completa</summary><div class="inner"><p>\(R_{23}=\frac{40\cdot60}{100}=24\ \Omega\); \(R_{eq}=10+24+6=40\ \Omega\); \(I_T=60/40=1{,}5\) A.</p>
+<div class="zero"><p class="ft">Cómo usarlos</p><p class="lede">Un problema representativo de cada bloque de los boletines, resuelto con todos los pasos y con la comprobación final (balance de potencias, suma de fasores, Aarón...). Hazlos en papel; si te atascas, abre solo el primer paso.</p></div><div class="prob"><h3 class="ph" id="ex1">Problema 1 · Reducción de redes y potencia del generador <span class="tag">Boletín T2, problemas 1 y 9</span> <a class="tag" href="tema-02.html">T2</a></h3><div class="enun"><p class="et">Enunciado</p><p>Fuente de 60 V con R₁ = 10 Ω en serie, el paralelo de R₂ = 40 Ω y R₃ = 60 Ω, y R₄ = 6 Ω en serie. Hallar el circuito equivalente, la intensidad total, la de cada rama y la potencia del generador.</p></div><details class="paso"><summary><span class="pn">✓</span>Solución completa</summary><div class="inner"><p>\(R_{23}=\frac{40\cdot60}{100}=24\ \Omega\); \(R_{eq}=10+24+6=40\ \Omega\); \(I_T=60/40=1{,}5\) A.</p>
 <p>Divisor de corriente: \(I_2=1{,}5\cdot\frac{60}{100}=0{,}9\) A; \(I_3=0{,}6\) A. \(P_{gen}=60\cdot1{,}5=90\) W.</p>
 <p>Comprobación del balance: \(1{,}5^2\cdot16+0{,}9^2\cdot40+0{,}6^2\cdot60=90\) W ✓.</p><p class="muted">La comprobación del balance de potencias es lo que distingue un ejercicio bien rematado.</p></div></details></div><div class="prob"><h3 class="ph" id="ex2">Problema 2 · Puente con Kennelly <span class="tag">Boletín T2, problemas 6-8</span> <a class="tag" href="tema-02.html">T2</a></h3><div class="enun"><p class="et">Enunciado</p><p>Circuito en puente: no hay asociaciones serie ni paralelo. Aplicar el teorema de Kennelly y reducir para hallar la resistencia equivalente y la potencia del generador.</p></div><details class="paso"><summary><span class="pn">✓</span>Solución completa</summary><div class="inner"><p>Se elige el triángulo superior (p. ej. \(R_{ab}=R_{bc}=R_{ca}=30\ \Omega\)) y se convierte a estrella: \(R_Y=\frac{30\cdot30}{90}=10\ \Omega\) en cada rama (regla rápida: \(R_\triangle/3\) si son iguales).</p>
 <p>Aparece un nudo nuevo; ahora sí hay serie y paralelo: se reduce hasta \(R_{eq}\), y con ella \(I_T=E/R_{eq}\) y \(P=EI_T\). Si el puente está <b>equilibrado</b> (\(R_1R_4=R_2R_3\)) la rama central no lleva corriente y puede quitarse sin más.</p><p class="muted">Comprueba primero si el puente está equilibrado: te ahorra todo el Kennelly.</p></div></details></div><div class="prob"><h3 class="ph" id="ex3">Problema 3 · Mallas con matriz simétrica <span class="tag">Boletín T3, problema 1</span> <a class="tag" href="tema-03.html">T3</a></h3><div class="enun"><p class="et">Enunciado</p><p>Circuito de dos mallas: E₁ = 20 V en la malla 1, E₂ = 10 V en la malla 2, R₁ = 5 Ω propia de la 1, R₂ = 10 Ω propia de la 2 y R₃ = 20 Ω compartida. Hallar corrientes de malla, de rama y potencia disipada en cada resistencia.</p></div><details class="paso"><summary><span class="pn">✓</span>Solución completa</summary><div class="inner"><p>Sistema (ambas horarias): \(\begin{cases}(5+20)I_1-20I_2=20\\-20I_1+(10+20)I_2=-10\end{cases}\)</p>
