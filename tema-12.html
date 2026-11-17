@@ -122,7 +122,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <p>La salida es trabajar <b>por tramos</b>. Una vez fijado el estado de cada diodo, el circuito <b>sí</b> es lineal, y dentro de ese tramo se puede usar todo el arsenal de los temas 2 y 3. El trabajo está en acertar el tramo.</p>
 <p class="ft">El método de prueba y comprobación, con orden</p><ol class="pasos"><li>Cuenta los diodos: con \(n\) diodos hay \(2^n\) combinaciones posibles, pero casi siempre solo una es coherente.</li><li>Haz una hipótesis razonable mirando las polaridades de las fuentes.</li><li>Sustituye: diodo que conduce → fuente de 0,7 V; diodo cortado → circuito abierto.</li><li>Resuelve el circuito lineal resultante.</li><li><b>Comprueba:</b> para los que supusiste conduciendo, \(I_D&gt;0\); para los cortados, \(V_D&lt;0{,}7\) V. Si alguno falla, cambia su hipótesis y repite.</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> No te saltes la comprobación. Un circuito con dos diodos puede dar un resultado aparentemente razonable con la hipótesis equivocada, y solo la verificación del signo de la corriente lo delata.</div>
-</div><!--/amp1--><!--manim:ac-t12--><figure class="fig manim-fig" id="anim-ac-t12"><p class="ft">Animación · Diodo y recta de carga</p><div class="manim" data-anim="ac-t12"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad.</figcaption></figure><!--/manim-->
+</div><!--/amp1--><!--manim:ac-t12--><figure class="fig manim-fig" id="anim-ac-t12"><p class="ft">Animación · Diodo y recta de carga</p><div class="manim" data-anim="ac-t12"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro.</figcaption></figure><!--/manim-->
 <!--deep--><h3 id="t12-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
 <h4><span class="hn">1</span>La unión PN</h4>
 <p>Al unir un semiconductor tipo p con uno tipo n, los portadores difunden y dejan una <b>zona de deplexión</b> con un campo interno que frena la difusión. La característica resultante es la ecuación de Shockley:</p>
@@ -154,7 +154,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
-<script src="anim-manim.js?v=19833" defer></script>
-<script src="anim-temas.js?v=19833" defer></script>
+<script src="anim-manim.js?v=26817" defer></script>
+<script src="anim-temas.js?v=26817" defer></script>
 </body>
 </html>
