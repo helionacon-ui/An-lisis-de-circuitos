@@ -120,7 +120,8 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Cómo se mide cada parámetro</p><p class="lede">Todos los juegos se obtienen igual: se anula una variable y se mide el cociente. Lo único que cambia es <b>qué</b> se anula.</p>
 <div class="tw"><table><tr><th>Parámetro</th><th>Definición</th><th>Ensayo</th></tr><tr><td>z₁₁</td><td>V₁/I₁ con I₂ = 0</td><td>Salida en <b>abierto</b></td></tr><tr><td>z₂₁</td><td>V₂/I₁ con I₂ = 0</td><td>Salida en abierto</td></tr><tr><td>y₁₁</td><td>I₁/V₁ con V₂ = 0</td><td>Salida en <b>cortocircuito</b></td></tr><tr><td>h₁₁</td><td>V₁/I₁ con V₂ = 0</td><td>Salida en cortocircuito</td></tr><tr><td>h₂₂</td><td>I₂/V₂ con I₁ = 0</td><td>Entrada en <b>abierto</b></td></tr></table></div><p class="run"><b>Regla para no perderse:</b> si el subíndice de la variable que anulas es una <b>corriente</b> (I = 0), la puerta va en <b>abierto</b>; si es una <b>tensión</b> (V = 0), va en <b>cortocircuito</b>.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> El signo de \(I_2\) es la fuente de error número uno. Con el convenio estándar \(I_2\) <b>entra</b> en la red por el borne superior de la puerta 2. Si en el problema la dibujan saliendo, hay que cambiarle el signo en las cuatro ecuaciones, no solo en una.</div>
-</div><!--/amp1--><!--deep--><h3 id="t11-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+</div><!--/amp1--><!--manim:ac-t11--><figure class="fig manim-fig" id="anim-ac-t11"><p class="ft">Animación · Parámetros Z de un cuadripolo</p><div class="manim" data-anim="ac-t11"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad.</figcaption></figure><!--/manim-->
+<!--deep--><h3 id="t11-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
 <h4><span class="hn">1</span>Las cuatro descripciones</h4>
 <div class="box key deepnote"><b>Idea clave.</b> un cuadripolo lineal y sin fuentes independientes internas queda descrito por <b>cuatro</b> números complejos. Cuál de los cuatro juegos usar es una cuestión de comodidad, no de física: todos describen la misma caja.</div>
 <div class="eqd">\[\begin{bmatrix}V_1\\V_2\end{bmatrix}=\begin{bmatrix}z_{11}&z_{12}\\z_{21}&z_{22}\end{bmatrix}\begin{bmatrix}I_1\\I_2\end{bmatrix}\qquad\begin{bmatrix}I_1\\I_2\end{bmatrix}=\begin{bmatrix}y_{11}&y_{12}\\y_{21}&y_{22}\end{bmatrix}\begin{bmatrix}V_1\\V_2\end{bmatrix}\]</div>
@@ -151,5 +152,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
+<script src="anim-manim.js?v=19833" defer></script>
+<script src="anim-temas.js?v=19833" defer></script>
 </body>
 </html>
