@@ -50,7 +50,7 @@ M.reg('ac-t6',M.curva({title:'Potencia en alterna: el factor de potencia',H:560,
  caps:[[7,'La potencia instantánea es <i>p = v·i</i>. Si tensión e intensidad están en fase, p es siempre positiva: la carga solo consume.'],[14,'Con desfase, hay intervalos con <i>p &lt; 0</i>: la energía vuelve a la red. La media baja con <i>cos φ</i>.'],[99,'Con φ = 90° (bobina o condensador ideal) la potencia media es cero: solo hay potencia <b>reactiva</b>, que va y viene sin consumirse.']]}));
 
 /* T7 resonancia serie */
-M.reg('ac-t7',M.curva({title:'Resonancia en un circuito RLC serie',H:540,dur:18,p:[5,60],ax:{xr:[0.2,2],yr:[0,1.1],xt:[0.5,1,1.5,2],yt:[0.5,1],xd:1,yd:1,xl:'ω/ω₀',yl:'I/I_{máx}'},h:300,
+M.reg('ac-t5b',M.curva({title:'Resonancia en un circuito RLC serie',H:540,dur:18,p:[5,60],ax:{xr:[0.2,2],yr:[0,1.1],xt:[0.5,1,1.5,2],yt:[0.5,1],xd:1,yd:1,xl:'ω/ω₀',yl:'I/I_{máx}'},h:300,
  f:function(x,R){var Q=100/R,y=Q*(x-1/x);return 1/Math.sqrt(1+y*y);},
  read:function(R){var Q=100/R;return ['R = '+nf(R,0)+' Ω     Q = ω₀L/R = '+nf(Q,1),'ancho de banda Δω = ω₀/Q = '+nf(1/Q,2)+'·ω₀'];},
  caps:[[6,'En resonancia, <i>ω₀ = 1/√(LC)</i>, las reactancias de L y C se anulan: la impedancia es solo R y la corriente es máxima.'],[12,'Con poca resistencia la curva es muy estrecha: el circuito es <b>selectivo</b> (factor de calidad Q alto).'],[99,'Al aumentar R la curva se ensancha y Q baja. Es el principio de los sintonizadores de radio y los filtros pasabanda.']]}));
@@ -99,4 +99,10 @@ M.reg('ac-t12',M.base({title:'Diodo: punto de trabajo con la recta de carga',H:5
   var lo=0,hi=Vs;for(var i=0;i<60;i++){var m=(lo+hi)/2;if(Id(m)>(Vs-m)/R*1000)hi=m;else lo=m;}var VD=(lo+hi)/2,I=(Vs-VD)/R*1000;
   D.dot(A.X(VD),A.Y(I),7,C.hl);D.text('Q',A.X(VD)+10,A.Y(I)-6,{s:17,c:C.hl,bold:true});
   D.text('V_{s} = '+nf(Vs,2)+' V,  R = 200 Ω   →   V_{D} = '+nf(VD,3)+' V,  I = '+nf(I,1)+' mA',W/2,470,{it:true,s:20,a:'center',c:C.m});}));
+/* T7 máxima transferencia de potencia en alterna */
+M.reg('ac-t7',M.traza({title:'Teoremas en alterna: máxima transferencia de potencia',H:560,dur:16,x0:-8,x1:2,ax:{xr:[-8.5,2.5],yr:[0,7],xt:[-8,-6,-4,-3,-2,0,2],yt:[2,4,6.25],xd:0,yd:2,xl:'X_{L} (Ω)',yl:'P (W)'},h:300,
+ f:function(X){return 100*4/(64+Math.pow(3+X,2))/1;},
+ extra:function(D,A){D.line(A.X(-3),A.Y(0),A.X(-3),A.Y(6.25),C.hl,1.2,[4,4]);D.text('X_{L} = −X_{th}',A.X(-3)+6,A.Y(6.6),{s:14,c:C.hl});},
+ read:function(X){return ['Thévenin: V_{th} = 10 V,  Z_{th} = 4 + j3 Ω    carga: Z_{L} = 4 '+(X<0?'− j':'+ j')+nf(Math.abs(X),2)+' Ω','P = |V_{th}|²R_{L}/|Z_{th} + Z_{L}|² = '+nf(100*4/(64+Math.pow(3+X,2)),2)+' W'];},
+ caps:[[5,'En alterna los teoremas de Thévenin y Norton son los mismos, pero con impedancias complejas y fasores.'],[10,'La potencia activa en la carga depende de su parte reactiva: la reactancia de la carga puede compensar la de la fuente.'],[99,'El máximo se da con la carga conjugada, <i>Z<sub>L</sub> = Z<sub>th</sub>*</i>: aquí 4 − j3 Ω, con <i>P<sub>máx</sub> = |V<sub>th</sub>|²/(4R<sub>th</sub>) = 6,25 W</i>.']]}));
 })();
